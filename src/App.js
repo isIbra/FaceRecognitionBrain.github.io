@@ -31,8 +31,8 @@ const particlesOptions = {
     }
   }
 }
-
-
+//1
+//this is the second branch
 function App() {
   const [input, setInput] = useState('');
   const [imageUrl, setImageurl] = useState('');
