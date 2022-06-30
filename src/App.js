@@ -32,7 +32,7 @@ const particlesOptions = {
   }
 }
 
-
+//this is the second branch
 function App() {
   const [input, setInput] = useState('');
   const [imageUrl, setImageurl] = useState('');
