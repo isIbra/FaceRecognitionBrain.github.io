@@ -59,7 +59,6 @@ function App() {
   }
 
   const displayFaceBox = (box) => {
-    console.log(box);
     setBox(box)
   }
 
