@@ -43,7 +43,23 @@ function App() {
   const [box, setBox] = useState({})
   const [route, setRoute] = useState('signin')
   const [isSignedIn, setIsSignedIn] = useState(false)
+  const [user, setUser] = useState({
+    id: '',
+      name: '',
+      email: '',
+      entries: 0,
+      joined: ''
+    })
 
+    const loadUser = (user) =>{setUser({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      entries: user.entries,
+      joined: user.joined
+    })}
+
+    
   const calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
@@ -77,7 +93,7 @@ function App() {
   const onRouteChange = (route) => {
     if (route === 'signedout') {
       setIsSignedIn(false)
-    }else if (route === 'home') {
+    } else if (route === 'home') {
       setIsSignedIn(true)
     }
     setRoute(route)
@@ -98,10 +114,10 @@ function App() {
           {/* <ListOfColors colors={colors} /> */}
         </div>
 
-        :(
-            route === 'signin'
-        ?< Signin onRouteChange={onRouteChange}/>
-        :< Register onRouteChange={onRouteChange}/>
+        : (
+          route === 'signin'
+            ? < Signin onRouteChange={onRouteChange} />
+            : < Register onRouteChange={onRouteChange} loadUser={loadUser}/>
         )
       }
     </div>
