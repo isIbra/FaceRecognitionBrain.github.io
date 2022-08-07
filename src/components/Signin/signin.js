@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Signin = ({ onRouteChange }) => {
+const Signin = ({ onRouteChange, loadUser }) => {
 
   const [signInEmail, setSignInEmail] = useState('')
   const [signInPassword, setSignInPassword] = useState('')
@@ -20,9 +20,11 @@ const Signin = ({ onRouteChange }) => {
         email: signInEmail,
         password: signInPassword
       })
-    }).then(response => response.json())
+    })
+    .then(response => response.json())
     .then(data => {
-      if (data === 'success'){
+      if (data === 'success') {
+        loadUser(data)
         onRouteChange('home')
       }
     })
@@ -60,8 +62,8 @@ const Signin = ({ onRouteChange }) => {
               value="Sign in" />
           </div>
           <div className="lh-copy mt3">
-            <p onClick={() => onRouteChange('register')} 
-            className="f6 link dim black db pointer">Register</p>
+            <p onClick={() => onRouteChange('register')}
+              className="f6 link dim black db pointer">Register</p>
           </div>
         </div>
       </main>
